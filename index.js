@@ -31,7 +31,7 @@ inquirer.prompt([
         type: 'checkbox',
         name: 'license',
         message: 'What kind of license should your project have?',
-        choices: ['MIT','APACHE 2.0', 'GPL 3.0', 'BSD 3', 'none',],
+        choices: ['MIT','APACHE'],
     },
     {
         type: 'input',
@@ -60,7 +60,7 @@ err ? console.error(err) : 'Success!'
 
 });
 
-const generateREADME = ({title, description, username, email, installation, usage, license, dependencies, tests, contributing}) => {
+const generateREADME = ({title, description, username, email, installation, usage, license, dependencies, tests, contributing,using}) => {
 return `# ${title}
 
 ## Description
@@ -86,10 +86,10 @@ ${installation}
 ## Usage
     
 ${usage}
-       
+    
 ## License
     
-This project is licensed under the ${license} license.
+${license}
     
 ## Dependencies
     
@@ -98,7 +98,11 @@ ${dependencies}
 ## Tests
     
 ${tests}
-   
+
+## Using
+    
+${using}
+    
 ## How to Contribute
     
 ${contributing}
