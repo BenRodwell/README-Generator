@@ -98,11 +98,7 @@ ${dependencies}
 ## Tests
     
 ${tests}
-
-## Using
-    
-${using}
-    
+   
 ## How to Contribute
     
 ${contributing}
