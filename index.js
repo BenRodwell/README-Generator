@@ -1,6 +1,8 @@
+// Inquirer and Fs Libraries
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+//Inquirer Prompt Function to create questions for the user to answer to create their README.md file
 inquirer.prompt([
     {
         type: 'input',
@@ -31,7 +33,7 @@ inquirer.prompt([
         type: 'checkbox',
         name: 'license',
         message: 'What kind of license should your project have?',
-        choices: ['MIT','APACHE'],
+        choices: ['MIT','APACHE 2.0', 'GPL 3.0', 'BDS 3', 'none',],
     },
     {
         type: 'input',
@@ -49,18 +51,20 @@ inquirer.prompt([
         message: 'What does the user need to know about contributing to the repo',
     },
 ])
+//Attains the user answers from the terminal and puts the answers on 'pending'
 .then((answers) => {
     const README = generateREADME(answers);
     console.log('Generating README file...')
 
-
+//Creates the README.md file and puts the answers into it
 fs.appendFile('README.md', README, (err) =>
 err ? console.error(err) : 'Success!'
 );
 
 });
 
-const generateREADME = ({title, description, username, email, installation, usage, license, dependencies, tests, contributing,using}) => {
+//Shows how the README.md file should display and uses literal templates to indicate where certain pieces of information should be
+const generateREADME = ({title, description, username, email, installation, usage, license, dependencies, tests, contributing}) => {
 return `# ${title}
 
 ## Description
@@ -99,9 +103,7 @@ ${dependencies}
     
 ${tests}
 
-## Using
-    
-${using}
+
     
 ## How to Contribute
     
