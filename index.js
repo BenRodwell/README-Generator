@@ -31,7 +31,7 @@ inquirer.prompt([
         type: 'checkbox',
         name: 'license',
         message: 'What kind of license should your project have?',
-        choices: ['MIT','APACHE 2.0', 'GPL 3.0', 'BSD 3', 'none'],
+        choices: ['MIT','APACHE 2.0', 'GPL 3.0', 'BSD 3', 'none',],
     },
     {
         type: 'input',
@@ -42,11 +42,6 @@ inquirer.prompt([
         type: 'input',
         name: 'tests',
         message: 'What command should be run to run tests?',
-    },
-    {
-        type: 'input',
-        name: 'using',
-        message: 'What does the user need to know about using the repo?',
     },
     {
         type: 'input',
@@ -65,7 +60,7 @@ err ? console.error(err) : 'Success!'
 
 });
 
-const generateREADME = ({title, description, tableOfContents, username, email, installation, usage, license, dependencies, tests, using, contributing}) => {
+const generateREADME = ({title, description, username, email, installation, usage, license, dependencies, tests, contributing}) => {
 return `# ${title}
 
 ## Description
@@ -74,7 +69,15 @@ ${description}
     
 ## Table of Contents
     
-${tableOfContents}
+* [Description](#description)
+* [Table of Contents](#table-of-contents)
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Dependencies](#dependencies)
+* [Tests](#tests)
+* [How To Contribute](#how-to-contribute)
+* [Questions](#questions)
 
 ## Installation
 To install necessary dependencies, run the following command:
@@ -83,11 +86,7 @@ ${installation}
 ## Usage
     
 ${usage}
-    
-## Credits
-    
-N/A
-    
+       
 ## License
     
 This project is licensed under the ${license} license.
@@ -109,7 +108,7 @@ ${using}
 ${contributing}
 
 ## Questions
-If you have any questions about the repo, open an aissue or contact me directly at ${email}. You can find more of my work at ${username}.
+If you have any questions about the repo, open an issue or contact me directly at ${email}. You can find more of my work at ${username}.
    
       `
 }
