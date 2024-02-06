@@ -33,12 +33,12 @@ inquirer.prompt([
         type: 'checkbox',
         name: 'license',
         message: 'What kind of license should your project have?',
-        choices: ['MIT','APACHE 2.0', 'GPL 3.0', 'BDS 3', 'none',],
+        choices: ['MIT','APACHE 2.0', 'GPL 3.0', 'BDS 3', 'none'],
     },
     {
         type: 'input',
-        name: 'dependencies',
-        message: 'What command should be run to install dependencies',
+        name: 'installation',
+        message: 'What command should be run to install the program?',
     },
     {
         type: 'input',
@@ -64,7 +64,7 @@ err ? console.error(err) : 'Success!'
 });
 
 //Shows how the README.md file should display and uses literal templates to indicate where certain pieces of information should be
-const generateREADME = ({title, description, username, email, installation, usage, license, dependencies, tests, contributing}) => {
+const generateREADME = ({title, description, username, email, installation, usage, license, tests, contributing}) => {
 return `# ${title}
 
 ## Description
@@ -78,7 +78,6 @@ ${description}
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
-* [Dependencies](#dependencies)
 * [Tests](#tests)
 * [How To Contribute](#how-to-contribute)
 * [Questions](#questions)
@@ -95,16 +94,10 @@ ${usage}
     
 ${license}
     
-## Dependencies
-    
-${dependencies}
-    
 ## Tests
     
 ${tests}
 
-
-    
 ## How to Contribute
     
 ${contributing}
